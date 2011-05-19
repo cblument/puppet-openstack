@@ -6,6 +6,7 @@ class openstack::objectstore( $isServiceEnabled=false ) inherits openstack {
 
   service { "nova-objectstore":
     ensure => $isServiceEnabled,
-    require => Package["nova-objectstore"]
+    require => Package["nova-objectstore"],
+    subscribe => File["/etc/nova/nova.conf"]
   }
 }

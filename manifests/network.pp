@@ -6,6 +6,7 @@ class openstack::network( $isServiceEnabled=false ) inherits openstack {
 
   service { "nova-network":
     ensure => $isServiceEnabled,
-    require => Package["nova-network"]
+    require => Package["nova-network"],
+    subscribe => File["/etc/nova/nova.conf"]
   }
 }

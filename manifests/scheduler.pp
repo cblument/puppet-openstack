@@ -6,6 +6,7 @@ class openstack::scheduler( $isServiceEnabled ) inherits openstack {
 
   service { "nova-scheduler":
     ensure => $isServiceEnabled,
-    require => Package["nova-scheduler"]
+    require => Package["nova-scheduler"],
+    subscribe => File["/etc/nova/nova.conf"]
   }
 }

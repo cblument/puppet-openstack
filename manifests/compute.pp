@@ -7,6 +7,7 @@ class openstack::compute( $isServiceEnabled=false )  inherits openstack {
 
   service { "nova-compute":
     ensure => $isServiceEnabled,
-    require => Package["nova-compute"]
+    require => Package["nova-compute"],
+    subscribe => File["/etc/nova/nova.conf"]
   }
 }
